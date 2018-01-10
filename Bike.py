@@ -1,4 +1,4 @@
-class Bike(object):
+class Bike( object ):
     def __init__( self, price, max_speed, miles = 0 ):
         self.price = price
         self.max_speed = max_speed
@@ -13,14 +13,18 @@ class Bike(object):
         print "Miles after the ride", self.miles
         return( self )
     def reverse( self ):
+        if self.miles < 5:
+            print "We only have", self.miles, "miles. Cannot reverse anymore!"
+            return( self )
         print "Revesing..."
         self.miles -= 5
         print "Miles after reversing", self.miles
+        return( self )
 
-Harley = Bike( 20000, "160mph" )
-Dukatti = Bike( 20000, "160mph" )
-Suzuki = Bike( 20000, "160mph" )
+Harley = Bike( 20000, "120mph" )
+Dukatti = Bike( 30000, "160mph" )
+Suzuki = Bike( 25000, "200mph" )
 
-Dukatti.displayInfo()
-Dukatti.ride()
-Dukatti.reverse()
+Harley.ride().ride().ride().reverse().displayInfo()
+Dukatti.ride().ride().reverse().reverse().displayInfo()
+Suzuki.reverse().reverse().reverse().displayInfo()
